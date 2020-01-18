@@ -1,0 +1,189 @@
+﻿<html>
+<head>
+    <title>first day in full stock web</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div class="container">
+    <form>
+
+        <div class="row">
+            <div class="col-50">
+                <input type="number" id="money" name="money" placeholder="money">
+            </div>
+
+            <div class="col-50">
+                <select id="currency" name="currency">
+                    <option value="s">سعودي</option>
+                    <option value="usa" selected> دولار</option>
+                    <option value="uk" se> بريطاني</option>
+                    <option value="y">يمني</option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row"  style="background: #ffd0d0;">
+            <div class="col-33">
+                <label> Currency </label>
+
+            </div>
+            <div class="col-33">
+                <label> EnChange </label>
+
+            </div>
+            <div class="col-33">
+                <label> Total </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-33">
+                <label> Suadi Arabic </label>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="s_change" name="s_change" READONLY>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="s_total" name="s_total" READONLY>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-33">
+                <label> USA </label>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="usa_change" name="usa_change" READONLY>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="usa_total" name="usa_total" READONLY>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-33">
+                <label> UK </label>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="uk_change" name="uk_change" READONLY>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="uk_total" name="uk_total" READONLY>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-33">
+                <label> Yemeni </label>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="y_change" name="y_change" READONLY>
+
+            </div>
+            <div class="col-33">
+                <input type="number" id="y_total" name="y_total" READONLY>
+
+            </div>
+
+        </div>
+
+
+
+        <!--<div class="row">-->
+        <!--<div class="col-25">-->
+        <!--<label for="subject">Subject</label>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="col-75">-->
+        <!--<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>-->
+        <!--</div>-->
+        <!--</div>-->
+
+    </form>
+</div>
+<script>
+
+
+    currency = document.getElementById('currency');
+    money = document.getElementById('money');
+
+    s_change = document.getElementById('s_change');
+    y_change = document.getElementById('y_change');
+    uas_change = document.getElementById('usa_change');
+    uk_change = document.getElementById('uk_change');
+
+
+    s_total = document.getElementById('s_total');
+    y_total = document.getElementById('y_total');
+    uas_total = document.getElementById('usa_total');
+    uk_total = document.getElementById('uk_total');
+
+    var sPrice = [1, 10, 145, 66.73];
+    var usaPrice = [3.7, 1, 1.5, 600];
+    var ukPrice = [345, 15, 1, 274.39];
+    var yPrice = [445,13 , 274.39, 1];
+    money.addEventListener("change", function (e) {
+//        alert(money.value);
+
+        change(money, usaPrice)
+
+    });
+    currency.addEventListener("change", function (e) {
+//        alert(money.value);
+        if (currency.value == "usa")
+            change(money, usaPrice);
+        else if (currency.value == "uk")
+            change(money, ukPrice);
+        else if (currency.value == "s")
+            change(money, sPrice);
+        else if (currency.value == "y")
+            change(money, yPrice);
+
+
+    });
+
+    function change(money, price) {
+        s_change.value = price[0];
+        uas_change.value = price[1];
+        uk_change.value = price[2];
+        y_change.value = price[3];
+
+
+        s_total.value = price[0] * parseInt(money.value);
+        uas_total.value = price[1] * parseInt(money.value);
+        uk_total.value = price[2] * parseInt(money.value);
+        y_total.value = price[3] * parseInt(money.value);
+
+    }
+
+
+</script>
+</body>
+
+
+</html>
+
+
